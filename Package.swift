@@ -17,7 +17,10 @@ let package = Package(
                 .product(name: "Algorithms", package: "swift-algorithms"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ],
-            path: "Sources"
+            path: "Sources",
+            swiftSettings: [
+                .unsafeFlags(["-enable-bare-slash-regex"])
+            ]
         ),
         .testTarget(
             name: "AdventOfCodeTests",
