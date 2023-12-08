@@ -3,7 +3,7 @@ import RegexBuilder
 
 extension Challenges2023 {
 
-    struct Number {
+    private struct Number {
         let value: Int
         let surrounding: [[String].Index: Substring]
 
@@ -18,7 +18,7 @@ extension Challenges2023 {
         }
     }
 
-    struct Gear: Hashable {
+    private struct Gear: Hashable {
         let x: String.Index
         let y: [String].Index
     }

@@ -4,7 +4,7 @@ import RegexBuilder
 
 extension Challenges2023 {
 
-    struct Card: Hashable {
+    private struct Card: Hashable {
         let id: Int
         let winningNumbers: [Int]
         let numbersYouHave: [Int]

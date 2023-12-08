@@ -4,7 +4,7 @@ import RegexBuilder
 
 extension Challenges2023 {
 
-    struct Cubes {
+    private struct Cubes {
         enum Color { case red, green, blue }
 
         let color: Color
@@ -39,7 +39,7 @@ extension Challenges2023 {
         }
     }
 
-    struct Pull {
+    private struct Pull {
         let cubes: [Cubes]
 
         init(string: String) {
@@ -51,7 +51,7 @@ extension Challenges2023 {
         }
     }
 
-    struct Game {
+    private struct Game {
         let id: Int
         let pulls: [Pull]
 

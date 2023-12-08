@@ -4,7 +4,7 @@ import CollectionConcurrencyKit
 
 extension Challenges2023 {
 
-    struct MapEntry {
+    private struct MapEntry {
         let destRangeStart: Int
         let srcRangeStart: Int
         let rangeLength: Int
@@ -21,7 +21,7 @@ extension Challenges2023 {
         }
     }
 
-    struct Map {
+    private struct Map {
         let entries: [Range<Int>: MapEntry]
 
         init(lines: [String]) {

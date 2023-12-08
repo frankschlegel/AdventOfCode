@@ -3,7 +3,7 @@ import RegexBuilder
 
 extension Challenges2023 {
 
-    struct Race {
+    private struct Race {
         let time: Int
         let distanceRecord: Int
 
