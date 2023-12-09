@@ -25,7 +25,7 @@ extension Challenges2023 {
                         )
                     }
                 } transform: { numbers in
-                    String(numbers).trimmingCharacters(in: .whitespaces).replacingOccurrences(of: "  ", with: " ").split(separator: " ").map { Int($0)! }
+                    String(numbers).trimmingCharacters(in: .whitespaces).numbers
                 }
                 "|"
                 TryCapture {
@@ -36,7 +36,7 @@ extension Challenges2023 {
                         )
                     }
                 } transform: { numbers in
-                    String(numbers).trimmingCharacters(in: .whitespaces).replacingOccurrences(of: "  ", with: " ").split(separator: " ").map { Int($0)! }
+                    String(numbers).trimmingCharacters(in: .whitespaces).numbers
                 }
             }
 
@@ -66,7 +66,7 @@ extension Challenges2023 {
     @discardableResult static func runDay4(input: Input) async throws -> ChallengeResult {
         let cards = input.lines().map(Card.init)
 
-        let part1 = cards.map(\.value).reduce(0, +)
+        let part1 = cards.map(\.value).sum
         print("Part 1: The sum of all card values is \(part1)")
 
         var cardCopyMap = [Card: [Card]]()

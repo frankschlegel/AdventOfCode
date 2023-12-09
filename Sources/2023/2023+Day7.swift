@@ -97,13 +97,13 @@ extension Challenges2023 {
         let handsPart1 = input.lines().map { Hand($0, withJokers: false) }
         let sortedHandsPart1 = handsPart1.sorted()
         let rankedHandsPart1 = zip(sortedHandsPart1, sortedHandsPart1.indices)
-        let part1 = rankedHandsPart1.map({ ($0.1 + 1) * $0.0.bid }).reduce(0, +)
+        let part1 = rankedHandsPart1.map({ ($0.1 + 1) * $0.0.bid }).sum
         print("The total winnings of the hands is \(part1)")
 
         let handsPart2 = input.lines().map { Hand($0, withJokers: true) }
         let sortedHandsPart2 = handsPart2.sorted()
         let rankedHandsPart2 = zip(sortedHandsPart2, sortedHandsPart2.indices)
-        let part2 = rankedHandsPart2.map({ ($0.1 + 1) * $0.0.bid }).reduce(0, +)
+        let part2 = rankedHandsPart2.map({ ($0.1 + 1) * $0.0.bid }).sum
         print("The total winnings of the hands with jokes is \(part2)")
 
         return ("\(part1)", "\(part2)")

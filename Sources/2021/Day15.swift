@@ -72,7 +72,7 @@ extension Challenges2021 {
         let start1: Node = cave[0, 0]!
         let goal1: Node = cave[cave.width-1, cave.height-1]!
         let path1 = self.a_star(from: start1, to: goal1, in: cave)
-        let totalRisk1 = path1.map(\.value).reduce(0, +) - start1.value
+        let totalRisk1 = path1.map(\.value).sum - start1.value
 
         print("Part 1: The lowest total risk of any path from the top left to the bottom right is \(totalRisk1).")
 
@@ -83,7 +83,7 @@ extension Challenges2021 {
         let start2: Node = extendedCave[0, 0]!
         let goal2: Node = extendedCave[extendedCave.width-1, extendedCave.height-1]!
         let path2 = self.a_star(from: start2, to: goal2, in: extendedCave)
-        let totalRisk2 = path2.map(\.value).reduce(0, +) - start2.value
+        let totalRisk2 = path2.map(\.value).sum - start2.value
 
         print("Part 2: Using the full map, the lowest total risk of any path from the top left to the bottom right is \(totalRisk2).")
 

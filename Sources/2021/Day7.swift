@@ -10,7 +10,7 @@ extension Challenges2021 {
         let minCost1 = crabs.indices.map({ position in
             crabs.map({ crabPos in
                 return abs(position - crabPos)
-            }).reduce(0, +)
+            }).sum
         }).reduce(Int.max, min)
 
         print("Part 1: They must spend \(minCost1) fuel to align to the final position.")
@@ -24,7 +24,7 @@ extension Challenges2021 {
                 // formula for 1 + 2 + ... + diff
                 let fuelCost = diff * (diff + 1) / 2
                 return fuelCost
-            }).reduce(0, +)
+            }).sum
         }).reduce(Int.max, min)
 
         print("Part 2: They must spend \(minCost2) fuel to align to the final position.")

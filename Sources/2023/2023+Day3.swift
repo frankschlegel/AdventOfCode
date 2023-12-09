@@ -51,7 +51,7 @@ extension Challenges2023 {
         }
 
         let partNumbers = numbers.filter(\.isPartNumber)
-        let part1 = partNumbers.map(\.value).reduce(0, +)
+        let part1 = partNumbers.map(\.value).sum
         print("Part 1: The sum of all part numbers is \(part1)")
 
         let gearMap = numbers.reduce([Gear: [Number]]()) { map, number in
@@ -65,7 +65,7 @@ extension Challenges2023 {
         }
         let validGears = gearMap.filter({ $0.value.count == 2 })
         let gearRatios = validGears.values.map({ $0[0].value * $0[1].value })
-        let part2 = gearRatios.reduce(0, +)
+        let part2 = gearRatios.sum
         print("Part 2: The sum gear ratios is \(part2)")
 
         return ("\(part1)", "\(part2)")

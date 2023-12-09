@@ -33,7 +33,7 @@ extension Challenges2021 {
         // Part 1
 
         let illegalCharacters = lines.compactMap({ self.findIllegalCharacter(in: $0) })
-        let score = illegalCharacters.map(\.errorScore).reduce(0, +)
+        let score = illegalCharacters.map(\.errorScore).sum
 
         print("Part 1: The total syntax error score is \(score).")
 

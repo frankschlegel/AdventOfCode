@@ -46,7 +46,7 @@ extension Challenges2021 {
             let stringValue = digits.map(String.init).joined()
             return Int(stringValue)!
         }
-        let valueSum = outputValues.reduce(0, +)
+        let valueSum = outputValues.sum
 
         print("Part 2: All of the output values add up to \(valueSum).")
 

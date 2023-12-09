@@ -21,7 +21,7 @@ extension Challenges2021 {
 
         var remainingOxygenValues = Array(linesAsNumbers)
         for index in remainingOxygenValues.first!.indices {
-            let sum = remainingOxygenValues.map({ $0[index] }).reduce(0, +)
+            let sum = remainingOxygenValues.map({ $0[index] }).sum
             let mostCommonValue = sum >= (remainingOxygenValues.count / 2 + remainingOxygenValues.count % 2) ? 1 : 0
             remainingOxygenValues = remainingOxygenValues.filter({ $0[index] == mostCommonValue })
             if remainingOxygenValues.count == 1 { break }
@@ -30,7 +30,7 @@ extension Challenges2021 {
 
         var remainingCO2Values = Array(linesAsNumbers)
         for index in remainingCO2Values.first!.indices {
-            let sum = remainingCO2Values.map({ $0[index] }).reduce(0, +)
+            let sum = remainingCO2Values.map({ $0[index] }).sum
             let leastCommonValue = sum >= (remainingCO2Values.count / 2 + remainingCO2Values.count % 2) ? 0 : 1
             remainingCO2Values = remainingCO2Values.filter({ $0[index] == leastCommonValue })
             if remainingCO2Values.count == 1 { break }

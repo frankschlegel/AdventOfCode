@@ -47,7 +47,7 @@ extension Challenges2021 {
             octopuses.allPoints.forEach({ $0.value.reset() })
 
             if steps == 100 {
-                flashesAfter100 = octopuses.allValues.map(\.numFlashes).reduce(0, +)
+                flashesAfter100 = octopuses.allValues.map(\.numFlashes).sum
                 if stepsUntilFullFlash != 0 { break }
             }
             if octopusesFlashedThisTurn.count == octopuses.allPoints.count {

@@ -33,7 +33,7 @@ extension Challenges2021 {
         func score(for draw: [Int]) -> Int {
             if self.wins(draw: draw) {
                 let remainingNumbers = self.allNumbers().subtracting(draw)
-                let sumRemaining = remainingNumbers.reduce(0, +)
+                let sumRemaining = remainingNumbers.sum
                 return sumRemaining * draw.last!
             } else {
                 return 0

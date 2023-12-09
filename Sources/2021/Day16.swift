@@ -30,15 +30,15 @@ private struct OperationPacket: Packet {
     let subPackets: [Packet]
     var length: Int {
         // version + operation + length type ID + subpackages
-        return 3 + 3 + 1 + (lengthTypeID == "0" ? 15 : 11) + subPackets.map(\.length).reduce(0, +)
+        return 3 + 3 + 1 + (lengthTypeID == "0" ? 15 : 11) + subPackets.map(\.length).sum
     }
     var versionsSum: Int {
-        self.version + subPackets.map(\.versionsSum).reduce(0, +)
+        self.version + subPackets.map(\.versionsSum).sum
     }
     var value: Int {
         switch self.operation {
-            case .sum: return self.subPackets.map(\.value).reduce(0, +)
-            case .product: return self.subPackets.map(\.value).reduce(1, *)
+            case .sum: return self.subPackets.map(\.value).sum
+            case .product: return self.subPackets.map(\.value).product
             case .minimum: return self.subPackets.map(\.value).reduce(Int.max, min)
             case .maximum: return self.subPackets.map(\.value).reduce(Int.min, max)
             case .greaterThan: return self.subPackets[0].value > self.subPackets[1].value ? 1 : 0
@@ -84,7 +84,7 @@ private enum Parser {
             case "0":
                 let numBits = Int(i.next(15), radix: 2)!
                 var subPackets = [Packet]()
-                while subPackets.map(\.length).reduce(0, +) < numBits {
+                while subPackets.map(\.length).sum < numBits {
                     subPackets.append(self.parse(from: &i))
                 }
                 return (subPackets, lengthTypeID)

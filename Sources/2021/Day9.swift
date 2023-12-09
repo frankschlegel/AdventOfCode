@@ -35,7 +35,7 @@ extension Challenges2021 {
 
         let lowPoints = heightMap.lowPoints
         let riskLevels = lowPoints.map({ $0.value + 1 })
-        let riskSum = riskLevels.reduce(0, +)
+        let riskSum = riskLevels.sum
 
         print("Part 1: The sum of the risk levels of all low points on the heightmap is \(riskSum).")
 

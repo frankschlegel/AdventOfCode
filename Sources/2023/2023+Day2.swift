@@ -83,10 +83,10 @@ extension Challenges2023 {
     @discardableResult static func runDay2(input: Input) async throws -> ChallengeResult {
         let games = input.lines().map(Game.init)
 
-        let part1 = games.filter({ $0.isPossible(maxReds: 12, maxGreens: 13, maxBlues: 14) }).map(\.id).reduce(0, +)
+        let part1 = games.filter({ $0.isPossible(maxReds: 12, maxGreens: 13, maxBlues: 14) }).map(\.id).sum
         print("Part 1: The sum of IDs of possible games is \(part1)")
 
-        let part2 = games.map(\.power).reduce(0, +)
+        let part2 = games.map(\.power).sum
         print("Part 2: The sum all games' Power is \(part2)")
 
         return ("\(part1)", "\(part2)")
