@@ -157,4 +157,46 @@ final class AdventOfCode2023Tests: XCTestCase {
         XCTAssertEqual(result2.part2, "161")
     }
 
+    func testDay8() async throws {
+        let input1 = TestInput(string: """
+            RL
+
+            AAA = (BBB, CCC)
+            BBB = (DDD, EEE)
+            CCC = (ZZZ, GGG)
+            DDD = (DDD, DDD)
+            EEE = (EEE, EEE)
+            GGG = (GGG, GGG)
+            ZZZ = (ZZZ, ZZZ)
+            """)
+        let result1 = try await Challenges2023.runDay8(input: input1)
+        XCTAssertEqual(result1.part1, "2")
+        XCTAssertEqual(result1.part2, "2")
+
+        let input2 = TestInput(string: """
+            LLR
+
+            AAA = (BBB, BBB)
+            BBB = (AAA, ZZZ)
+            ZZZ = (ZZZ, ZZZ)
+            """)
+        let result2 = try await Challenges2023.runDay8(input: input2)
+        XCTAssertEqual(result2.part1, "6")
+
+        let input3 = TestInput(string: """
+            LR
+
+            11A = (11B, XXX)
+            11B = (XXX, 11Z)
+            11Z = (11B, XXX)
+            22A = (22B, XXX)
+            22B = (22C, 22C)
+            22C = (22Z, 22Z)
+            22Z = (22B, 22B)
+            XXX = (XXX, XXX)
+            """)
+        let result3 = try await Challenges2023.runDay8(input: input3)
+        XCTAssertEqual(result3.part2, "6")
+    }
+
 }
