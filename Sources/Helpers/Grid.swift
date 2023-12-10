@@ -51,6 +51,14 @@ struct Grid<Element> {
         self.allPoints.map(\.value)
     }
 
+    var rows: [[Point]] {
+        return self.elements.enumerated().map { y, row in
+            row.enumerated().map { x, value in
+                Point(x: x, y: y, value: value)
+            }
+        }
+    }
+
     func getDirectNeighbors(_ x: Int, _ y: Int) -> Set<Point> {
         return Set<Point>([
             self[x-1, y],

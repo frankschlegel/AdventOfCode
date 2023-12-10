@@ -210,4 +210,57 @@ final class AdventOfCode2023Tests: XCTestCase {
         XCTAssertEqual(result1.part2, "2")
     }
 
+    func testDay10() async throws {
+        let input1 = TestInput(string: """
+            -L|F7
+            7S-7|
+            L|7||
+            -L-J|
+            L|-JF
+            """)
+        let result1 = try await Challenges2023.runDay10(input: input1)
+        XCTAssertEqual(result1.part1, "4")
+        XCTAssertEqual(result1.part2, "1")
+
+        let input2 = TestInput(string: """
+            7-F7-
+            .FJ|7
+            SJLL7
+            |F--J
+            LJ.LJ
+            """)
+        let result2 = try await Challenges2023.runDay10(input: input2)
+        XCTAssertEqual(result2.part1, "8")
+        XCTAssertEqual(result2.part2, "1")
+
+        let input3 = TestInput(string: """
+            ...........
+            .S-------7.
+            .|F-----7|.
+            .||.....||.
+            .||.....||.
+            .|L-7.F-J|.
+            .|..|.|..|.
+            .L--J.L--J.
+            ...........
+            """)
+        let result3 = try await Challenges2023.runDay10(input: input3)
+        XCTAssertEqual(result3.part2, "4")
+
+        let input4 = TestInput(string: """
+            .F----7F7F7F7F-7....
+            .|F--7||||||||FJ....
+            .||.FJ||||||||L7....
+            FJL7L7LJLJ||LJ.L-7..
+            L--J.L7...LJS7F-7L7.
+            ....F-J..F7FJ|L7L7L7
+            ....L7.F7||L7|.L7L7|
+            .....|FJLJ|FJ|F7|.LJ
+            ....FJL-7.||.||||...
+            ....L---J.LJ.LJLJ...
+            """)
+        let result4 = try await Challenges2023.runDay10(input: input4)
+        XCTAssertEqual(result4.part2, "8")
+    }
+
 }
