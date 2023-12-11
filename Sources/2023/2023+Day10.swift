@@ -71,36 +71,33 @@ extension Challenges2023 {
 
         // Scan grid line by line.
         for (y, scanLine) in grid.rows.enumerated() {
-            var next = 0
-            var pathLine = [Int]()
-            // Build an edge map.
+            var inside = false
+            var opening: String? = nil
+            var pathLine = [Bool]()
+            // Mark tiles that are inside the path based on the encountered edges.
             for point in scanLine {
                 if !path.contains(point) {
-                    pathLine.append(0)
+                    pathLine.append(inside)
                 } else {
                     switch point.value {
-                        case "F", "L": next += 1
-                        case "-": next += 0
-                        case "7", "J": next += 0
-                        case "|": next += 2;
+                        case "F", "L": opening = point.value
+                        case "-": break
+                        case "7": if opening == "L" { inside = !inside }
+                        case "J": if opening == "F" { inside = !inside }
+                        case "|": inside = !inside
                         default: fatalError()
                     }
-                    pathLine.append(next)
+                    pathLine.append(inside)
                 }
             }
-            print(pathLine.map(String.init).joined())
 
-            // Check for changes in the edge map and fill free spots between odd and even edges/
-            var previous = 0
-            for (x, edge) in pathLine.enumerated() {
-                if edge == 0, x != (pathLine.count - 1), previous != 0, previous.isMultiple(of: 2), pathLine[((x+1)...)].contains(where: { $0 > previous }) {
+            // Mark all tiles that are inside the path and not on the edge with 'I'
+            for (x, point) in scanLine.enumerated() {
+                if pathLine[x], !path.contains(point) {
                     grid[x, y] = "I"
-                } else {
-                    previous = edge
                 }
             }
         }
-        print(grid)
 
         let part2 = grid.allPoints.filter({ $0.value == "I" }).count
         print("Part 2: There are \(part2) tiles enclosed in the loop")
