@@ -14,6 +14,10 @@ struct Grid<Element> {
             hasher.combine(self.x)
             hasher.combine(self.y)
         }
+
+        func manhattanDistance(to other: Point) -> Int {
+            abs(self.x - other.x) + abs(self.y - other.y)
+        }
     }
 
     var elements: [[Element]]
@@ -57,6 +61,30 @@ struct Grid<Element> {
                 Point(x: x, y: y, value: value)
             }
         }
+    }
+
+    var columns: [[Point]] {
+        var columns = [[Point]]()
+        for x in 0..<self.width {
+            let column = (0..<self.height).map({ y in self[x, y]! })
+            columns.append(column)
+        }
+        return columns
+    }
+
+    func insertingRow(at index: Int, element: Element) -> Self {
+        var newElements = self.elements
+        newElements.insert(Array(repeating: element, count: self.width), at: index)
+        return Self(newElements)
+    }
+
+    func insertingColumn(at index: Int, element: Element) -> Self {
+        let newElements = self.elements.map { row in
+            var newRow = row
+            newRow.insert(element, at: index)
+            return newRow
+        }
+        return Self(newElements)
     }
 
     func getDirectNeighbors(_ x: Int, _ y: Int) -> Set<Point> {
