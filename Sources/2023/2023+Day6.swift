@@ -28,8 +28,8 @@ extension Challenges2023 {
 
         let timesString = lines[0].wholeMatch(of: /Time:\s+([\d\s]+)/)!.output.1.replacing(/\s+/, with: " ")
         let distanceString = lines[1].wholeMatch(of: /Distance:\s+([\d\s]+)/)!.output.1.replacing(/\s+/, with: " ")
-        let times = timesString.numbers
-        let distances = distanceString.numbers
+        let times = timesString.numbers()
+        let distances = distanceString.numbers()
         let races = zip(times, distances).map { Race(time: $0.0, distanceRecord: $0.1) }
 
         let part1 = races.map(\.numBeatingWays).product

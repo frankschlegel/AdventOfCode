@@ -25,7 +25,7 @@ extension Challenges2023 {
                         )
                     }
                 } transform: { numbers in
-                    String(numbers).trimmingCharacters(in: .whitespaces).numbers
+                    String(numbers).trimmingCharacters(in: .whitespaces).numbers()
                 }
                 "|"
                 TryCapture {
@@ -36,7 +36,7 @@ extension Challenges2023 {
                         )
                     }
                 } transform: { numbers in
-                    String(numbers).trimmingCharacters(in: .whitespaces).numbers
+                    String(numbers).trimmingCharacters(in: .whitespaces).numbers()
                 }
             }
 

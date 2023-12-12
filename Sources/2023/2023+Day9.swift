@@ -6,7 +6,7 @@ private struct Values {
     let history: [Int]
 
     init(_ string: String) {
-        self.history = string.numbers
+        self.history = string.numbers()
     }
 
     private var differences: [[Int]] {
